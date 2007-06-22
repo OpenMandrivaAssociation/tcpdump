@@ -1,7 +1,7 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
 Version:	3.9.5
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
@@ -27,6 +27,7 @@ Install tcpdump if you need a program to monitor network traffic.
 %setup -q
 
 %build
+%serverbuild
 libtoolize --copy --force
 %define	optflags $RPM_OPT_FLAGS -DIP_MAX_MEMBERSHIPS=20
 
