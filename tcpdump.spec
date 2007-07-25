@@ -1,13 +1,14 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
 Version:	3.9.5
-Release:	%mkrel 2
+Release:	%mkrel 3
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
 URL:		http://www.tcpdump.org/
 Source0:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source1:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
+Patch0:		tcpdump-cvs-CVE-2007-3798.patch
 BuildRequires:	libpcap-devel
 BuildRequires:	openssl-devel
 BuildRequires:	libtool
@@ -25,6 +26,7 @@ Install tcpdump if you need a program to monitor network traffic.
 %prep
 
 %setup -q
+%patch0 -p1 -b .cve-2007-3798
 
 %build
 %serverbuild
@@ -60,5 +62,3 @@ rm -rf %{buildroot}
 %doc README CHANGES CREDITS FILES LICENSE TODO VERSION PLATFORMS
 %{_sbindir}/tcpdump
 %{_mandir}/man1/tcpdump.1*
-
-
