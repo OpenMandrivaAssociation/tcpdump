@@ -12,7 +12,6 @@ BuildRequires:	libpcap-devel
 BuildRequires:	openssl-devel
 BuildRequires:	libtool
 BuildRequires:	autoconf2.5
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Tcpdump is a command-line tool for monitoring network traffic.  Tcpdump can
