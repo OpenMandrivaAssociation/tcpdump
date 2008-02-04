@@ -1,7 +1,7 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
 Version:	3.9.8
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
@@ -10,6 +10,7 @@ Source0:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source1:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
 BuildRequires:	libpcap-devel
 BuildRequires:	openssl-devel
+BuildRequires:	libsmi-devel
 BuildRequires:	libtool
 BuildRequires:	autoconf2.5
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
