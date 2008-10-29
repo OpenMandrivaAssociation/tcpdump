@@ -1,14 +1,14 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
-Version:	3.9.8
-Release:	%mkrel 3
+Version:	4.0.0
+Release:	%mkrel 1
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
 URL:		http://www.tcpdump.org/
 Source0:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source1:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
-BuildRequires:	libpcap-devel
+BuildRequires:	pcap-devel >= 1.0.0-3
 BuildRequires:	openssl-devel
 BuildRequires:	libsmi-devel
 BuildRequires:	libtool
@@ -32,8 +32,15 @@ Install tcpdump if you need a program to monitor network traffic.
 libtoolize --copy --force
 %define	optflags $RPM_OPT_FLAGS -DIP_MAX_MEMBERSHIPS=20
 
+export LIBS="-lcrypto"
+
 %configure2_5x \
     --enable-ipv6
+
+cat >> config.h << EOF
+#define HAVE_LIBCRYPTO 1
+#define HAVE_OPENSSL_EVP_H 1
+EOF
 
 %undefine optflags
 
@@ -49,15 +56,16 @@ rm -rf %{buildroot}
 install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_mandir}/man1
 
-#install -m755 -s tcpdump ${RPM_BUILD_ROOT}%{_sbindir}
-#install -m644 tcpdump.1 ${RPM_BUILD_ROOT}%{_mandir}/man8/tcpdump.8
 %makeinstall_std
+
+# cleanup (wtf?)
+rm -f %{buildroot}%{_sbindir}/tcpdump.%{version}
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc README CHANGES CREDITS FILES LICENSE TODO VERSION PLATFORMS
+%doc README CHANGES CREDITS LICENSE
 %{_sbindir}/tcpdump
 %{_mandir}/man1/tcpdump.1*
