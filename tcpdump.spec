@@ -1,7 +1,7 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
 Version:	4.0.0
-Release:	%mkrel 3
+Release:	%mkrel 4
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
