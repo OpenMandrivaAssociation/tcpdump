@@ -1,7 +1,7 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
-Version:	4.0.0
-Release:	%mkrel 4
+Version:	4.1.0
+Release:	%mkrel 1
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
@@ -12,7 +12,6 @@ BuildRequires:	pcap-devel >= 1.0.0-3
 BuildRequires:	openssl-devel
 BuildRequires:	libsmi-devel
 BuildRequires:	libtool
-BuildRequires:	autoconf2.5
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -25,7 +24,7 @@ Install tcpdump if you need a program to monitor network traffic.
 
 %prep
 
-%setup -q
+%setup -q -n %{name}-4.1
 
 %build
 %serverbuild
@@ -68,4 +67,5 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README CHANGES CREDITS LICENSE
 %{_sbindir}/tcpdump
+%{_sbindir}/tcpdump.4.1
 %{_mandir}/man1/tcpdump.1*
