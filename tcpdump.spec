@@ -1,6 +1,6 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
-Version:	4.1.0
+Version:	4.1.1
 Release:	%mkrel 1
 Epoch:		2
 Group:	 	Monitoring
@@ -11,7 +11,6 @@ Source1:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
 BuildRequires:	pcap-devel >= 1.0.0-3
 BuildRequires:	openssl-devel
 BuildRequires:	libsmi-devel
-BuildRequires:	libtool
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -23,25 +22,13 @@ ones that match particular criteria.
 Install tcpdump if you need a program to monitor network traffic.
 
 %prep
-
-%setup -q -n %{name}-4.1
+%setup -q -n %{name}-%{version}
 
 %build
 %serverbuild
-libtoolize --copy --force
-%define	optflags $RPM_OPT_FLAGS -DIP_MAX_MEMBERSHIPS=20
-
-export LIBS="-lcrypto"
-
+export CFLAGS="%optflags -DIP_MAX_MEMBERSHIPS=20"
 %configure2_5x \
     --enable-ipv6
-
-cat >> config.h << EOF
-#define HAVE_LIBCRYPTO 1
-#define HAVE_OPENSSL_EVP_H 1
-EOF
-
-%undefine optflags
 
 %make
 
@@ -52,13 +39,7 @@ EOF
 %install
 rm -rf %{buildroot}
 
-install -d %{buildroot}%{_sbindir}
-install -d %{buildroot}%{_mandir}/man1
-
 %makeinstall_std
-
-# cleanup (wtf?)
-rm -f %{buildroot}%{_sbindir}/tcpdump.%{version}
 
 %clean
 rm -rf %{buildroot}
@@ -66,6 +47,5 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc README CHANGES CREDITS LICENSE
-%{_sbindir}/tcpdump
-%{_sbindir}/tcpdump.4.1
+%{_sbindir}/*
 %{_mandir}/man1/tcpdump.1*
