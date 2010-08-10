@@ -1,7 +1,7 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
 Version:	4.1.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
@@ -40,6 +40,9 @@ export CFLAGS="%optflags -DIP_MAX_MEMBERSHIPS=20"
 rm -rf %{buildroot}
 
 %makeinstall_std
+# (misc) remove the binary, has this only pollutes completion
+# and take useless space in the rpm
+rm -f %{buildroot}/%_sbindir/%name.%version
 
 %clean
 rm -rf %{buildroot}
@@ -47,5 +50,5 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc README CHANGES CREDITS LICENSE
-%{_sbindir}/*
+%{_sbindir}/%{name}
 %{_mandir}/man1/tcpdump.1*
