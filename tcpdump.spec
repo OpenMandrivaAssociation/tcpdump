@@ -1,14 +1,15 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
-Version:	4.1.1
-Release:	%mkrel 3
+Version:	4.2.0
+Release:	%mkrel 1
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
 URL:		http://www.tcpdump.org/
 Source0:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source1:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
-BuildRequires:	pcap-devel >= 1.0.0-3
+Patch0:		tcpdump-4.2.0-missing_ppi_header.diff
+BuildRequires:	pcap-devel >= 1.2.0
 BuildRequires:	openssl-devel
 BuildRequires:	libsmi-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -23,10 +24,10 @@ Install tcpdump if you need a program to monitor network traffic.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p0
 
 %build
-%serverbuild
-export CFLAGS="%optflags -DIP_MAX_MEMBERSHIPS=20"
+export CFLAGS="%{optflags} -I. -DIP_MAX_MEMBERSHIPS=20"
 %configure2_5x \
     --enable-ipv6
 
