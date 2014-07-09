@@ -25,7 +25,7 @@ Install tcpdump if you need a program to monitor network traffic.
 
 %build
 export CFLAGS="%{optflags} -I. -DIP_MAX_MEMBERSHIPS=20"
-%configure2_5x \
+%configure \
     --enable-ipv6
 
 %make
