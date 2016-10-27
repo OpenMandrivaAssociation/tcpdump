@@ -1,25 +1,13 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
-Version:	4.6.2
-Release:	2
+Version:	4.8.1
+Release:	1
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
 URL:		http://www.tcpdump.org/
 Source0:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source1:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
-Patch9:		0009-Do-more-bounds-checking-and-length-checking.patch
-Patch10:	0010-Do-bounds-checking-and-length-checking.patch
-Patch11:	0011-Add-initial-bounds-check-get-rid-of-union-aodv.patch
-Patch12:	0012-Clean-up-error-message-printing.patch
-Patch13:	0013-Further-cleanups.patch
-Patch14:	0014-Not-using-offsetof-any-more-so-no-need-for-stddef.h.patch
-Patch15:	0015-Report-a-too-long-unreachable-destination-list.patch
-Patch16:	tcpdump-4.6.2-CVE-2014-9140.patch
-Patch17:	tcpdump-4.6.2-CVE-2015-0261.patch
-Patch18:	tcpdump-4.6.2-CVE-2015-2153.patch
-Patch19:	tcpdump-4.6.2-CVE-2015-2154.patch
-Patch20:	tcpdump-4.6.2-CVE-2015-2155.patch
 BuildRequires:	pcap-devel >= 1.2.0
 BuildRequires:	openssl-devel
 BuildRequires:	libsmi-devel
@@ -39,7 +27,7 @@ Install tcpdump if you need a program to monitor network traffic.
 %build
 %serverbuild
 export CFLAGS="%{optflags} -I. -DIP_MAX_MEMBERSHIPS=20"
-%configure2_5x \
+%configure \
     --enable-ipv6
 
 %make
