@@ -1,13 +1,12 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
-Version:	4.8.1
+Version:	4.9.2
 Release:	1
 Epoch:		2
 Group:	 	Monitoring
 License:	BSD
 URL:		http://www.tcpdump.org/
 Source0:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
-Source1:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
 BuildRequires:	pcap-devel >= 1.2.0
 BuildRequires:	openssl-devel
 BuildRequires:	libsmi-devel
@@ -42,5 +41,3 @@ rm -f %{buildroot}/%{_sbindir}/%{name}.%{version}
 %doc README.md CHANGES CREDITS LICENSE
 %{_sbindir}/%{name}
 %{_mandir}/man1/tcpdump.1*
-
-
