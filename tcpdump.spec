@@ -21,7 +21,7 @@ Install tcpdump if you need a program to monitor network traffic.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %serverbuild
