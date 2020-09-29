@@ -1,8 +1,8 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
-Version:	4.9.3
-Release:	1
 Epoch:		2
+Version:	4.9.3
+Release:	2
 Group:	 	Monitoring
 License:	BSD
 URL:		http://www.tcpdump.org/
@@ -29,10 +29,11 @@ export CFLAGS="%{optflags} -I. -DIP_MAX_MEMBERSHIPS=20"
 %configure \
     --enable-ipv6
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
+
 # (misc) remove the binary, has this only pollutes completion
 # and take useless space in the rpm
 rm -f %{buildroot}/%{_sbindir}/%{name}.%{version}
