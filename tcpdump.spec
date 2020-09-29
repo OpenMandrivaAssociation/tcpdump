@@ -7,9 +7,9 @@ Group:	 	Monitoring
 License:	BSD
 URL:		http://www.tcpdump.org/
 Source0:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
-BuildRequires:	pcap-devel >= 1.2.0
-BuildRequires:	openssl-devel
-BuildRequires:	libsmi-devel
+BuildRequires:	pkgconfig(libpcap)
+BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(libsmi)
 
 %description
 Tcpdump is a command-line tool for monitoring network traffic.  Tcpdump can
