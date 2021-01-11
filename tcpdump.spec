@@ -1,8 +1,8 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
 Epoch:		2
-Version:	4.9.3
-Release:	2
+Version:	4.99.0
+Release:	1
 Group:	 	Monitoring
 License:	BSD
 URL:		http://www.tcpdump.org/
@@ -36,9 +36,9 @@ export CFLAGS="%{optflags} -I. -DIP_MAX_MEMBERSHIPS=20"
 
 # (misc) remove the binary, has this only pollutes completion
 # and take useless space in the rpm
-rm -f %{buildroot}/%{_sbindir}/%{name}.%{version}
+rm -f %{buildroot}/%{_bindir}/%{name}.%{version}
 
 %files
 %doc README.md CHANGES CREDITS LICENSE
-%{_sbindir}/%{name}
+%{_bindir}/%{name}
 %{_mandir}/man1/tcpdump.1*
