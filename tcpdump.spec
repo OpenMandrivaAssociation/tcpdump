@@ -5,7 +5,7 @@ Version:	4.99.5
 Release:	1
 Group:	 	Monitoring
 License:	BSD
-URL:		http://www.tcpdump.org/
+URL:		https://www.tcpdump.org/
 Source0:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(libpcap)
 BuildRequires:	pkgconfig(openssl)
