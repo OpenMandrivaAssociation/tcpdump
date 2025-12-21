@@ -7,6 +7,11 @@ Group:	 	Monitoring
 License:	BSD
 URL:		https://www.tcpdump.org/
 Source0:	http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(libpcap)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libsmi)
