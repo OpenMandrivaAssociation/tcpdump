@@ -1,8 +1,8 @@
 Summary:	A network traffic monitoring tool
 Name:		tcpdump
 Epoch:		2
-Version:	4.99.5
-Release:	2
+Version:	4.99.6
+Release:	1
 Group:	 	Monitoring
 License:	BSD
 URL:		https://www.tcpdump.org/
